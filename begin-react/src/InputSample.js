@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 function InputSample() {
   const [inputs, setInputs] = useState({
     name: "",
     nickname: "",
   });
-  const { name, nickname } = inputs; // 비구조화 할당
+  const nameInput = useRef(); //Ref객체를 만들고
+  const { name, nickname } = inputs;
 
   const onChange = (e) => {
     const { value, name } = e.target;
-    //e객체에서 value, name을 추출 (비구조화 할당)
 
     setInputs({
-      ...inputs, //기존 input 객체 복사
-      [name]: value, //name 키를 가진 값을 value로 설정
+      ...inputs,
+      [name]: value,
     });
   };
   const onReset = () => {
@@ -21,10 +21,19 @@ function InputSample() {
       name: "",
       nickname: "",
     });
+    nameInput.current.focus();
+    //초기화 버튼을 눌렀을 때, current는 원하는 DOM을 가리키고 focus()
   };
   return (
     <div>
-      <input name="name" placeholder="이름" onChange={onChange} value={name} />
+      <input
+        name="name"
+        placeholder="이름"
+        onChange={onChange}
+        value={name}
+        ref={nameInput}
+        //선택하고 싶은 DOM 에 ref값으로 Ref객체를 설정
+      />
       <input
         name="nickname"
         placeholder="닉네임"

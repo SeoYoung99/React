@@ -1,7 +1,7 @@
 import React from "react";
-import Input from "./Inputs";
+import InputSample from "./InputSample";
 
 function App() {
-  return <Input />;
+  return <InputSample />;
 }
 export default App;
