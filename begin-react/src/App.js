@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <Wrapper>
-        <Hello name="react" color="red" />
+        <Hello name="react" color="red" isTrue={false} />
         <Hello color="pink" />
       </Wrapper>
       {/* Hello라는 컴포넌트에 props전달, Hello컴포넌트에서 인자로 받는다.*/}
