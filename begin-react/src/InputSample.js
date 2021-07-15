@@ -1,20 +1,40 @@
 import React, { useState } from "react";
 
 function InputSample() {
-  const [text, setText] = useState(""); //현재상태, Setter함수
+  const [inputs, setInputs] = useState({
+    name: "",
+    nickname: "",
+  });
+  const { name, nickname } = inputs; // 비구조화 할당
+
   const onChange = (e) => {
-    setText(e.target.value); //이벤트가 발생한 DOM의 값으로 text를 업데이트
+    const { value, name } = e.target;
+    //e객체에서 value, name을 추출 (비구조화 할당)
+
+    setInputs({
+      ...inputs, //기존 input 객체 복사
+      [name]: value, //name 키를 가진 값을 value로 설정
+    });
   };
   const onReset = () => {
-    setText(""); //reset
+    setInputs({
+      name: "",
+      nickname: "",
+    });
   };
   return (
     <div>
-      <input onChange={onChange} value={text} />
-      {/* input태그의 value값도 설정해주어야 내용이 업데이트됨 */}
+      <input name="name" placeholder="이름" onChange={onChange} value={name} />
+      <input
+        name="nickname"
+        placeholder="닉네임"
+        onChange={onChange}
+        value={nickname}
+      />
       <button onClick={onReset}>초기화</button>
       <div>
-        <b>값: {text}</b>
+        <b>값: </b>
+        {name} ({nickname})
       </div>
     </div>
   );
