@@ -52,6 +52,10 @@ function App() {
     });
     nextId.current += 1;
   };
+  const onRemove = (id) => {
+    //id가 일치하지 않는 원소만 추출해서 새로운 배열을 만든다. (id에 해당하는 원소만 제거)
+    setUsers(users.filter((user) => user.id !== id));
+  };
   return (
     <>
       <CreateUser
@@ -62,6 +66,7 @@ function App() {
       />
       <UserList
         users={users}
+        onRemove={onRemove}
         /* users라는 props값에 users배열 객체를 넣어줌 */
       />
     </>

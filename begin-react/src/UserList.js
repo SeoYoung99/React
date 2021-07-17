@@ -1,19 +1,20 @@
 import React from "react";
 
-function User({ user }) {
-  //컴포넌트를 재사용할 수 있도록
+function User({ user, onRemove }) {
+  //User컴포넌트: 배열의 각 요소를 보여준다
   return (
     <div>
       <b>{user.username}</b> <span>({user.email})</span>
+      <button onClick={() => onRemove(user.id)}>삭제</button>
     </div>
   );
 }
 
-function UserList({ users }) {
+function UserList({ users, onRemove }) {
   return (
     <div>
       {users.map((user) => (
-        <User user={user} key={user.id} />
+        <User user={user} key={user.id} onRemove={onRemove} />
       ))}
     </div>
   );
