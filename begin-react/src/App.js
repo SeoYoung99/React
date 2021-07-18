@@ -1,7 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useMemo } from "react";
 import CreateUser from "./CreateUser";
 import UserList from "./UserList";
 
+function countActiveUsers(users) {
+  //인자로 배열 받아옴
+  console.log("활성 사용자 수 세는 중...");
+  return users.filter((user) => user.active).length;
+  //배열을 순회하며 조건을 만족하는 원소들로 구성된 새로운 배열의 length
+}
 function App() {
   const [inputs, setInputs] = useState({
     username: "",
@@ -69,6 +75,9 @@ function App() {
       )
     );
   };
+  const count = useMemo(() => countActiveUsers(users), [users]);
+  //두번째 파라미터 배열 안에 넣은 내용이 바뀌면, 첫번째 인자로 등록한 함수를 호출해서 값을 연산해주고,
+  //만약에 내용이 바뀌지 않았다면 이전에 연산한 값을 재사용
   return (
     <>
       <CreateUser
@@ -83,6 +92,7 @@ function App() {
         onToggle={onToggle}
         /* users라는 props값에 users배열 객체를 넣어줌 */
       />
+      <div>활성사용자 수: {count} </div>
     </>
   );
 }
