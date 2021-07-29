@@ -1,4 +1,5 @@
-![image](https://user-images.githubusercontent.com/76687318/127445763-20d5db88-65fe-407a-bc4d-f6758ff61719.png)
+![image](https://user-images.githubusercontent.com/76687318/127446344-68469636-d4b2-478e-8c01-2806c03775cc.png)
+
 
 1. BrowserRouter는 최상위 컴포넌트를 감싸주어 BrowserRouter를 사용가능하도록 해준다.
 2. url에 따라 달라져야하는 컴포넌트에 Route로 감싸주고 path지정
